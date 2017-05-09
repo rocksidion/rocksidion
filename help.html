@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mariana Trench</title>
+  <link rel="stylesheet" href="w3-4.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Link to font awesome icons style sheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="w3-top">
+  <div class="w3-bar w3-blue w3-card-2 w3-opacity">
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOME</a>
+    <a href="#ABOUT" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ABOUT</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <a href="explore.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EXPLORE</a>
+    </div>
+
+    <!-- Learned w3 class - menu button -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+  </div>
+
+<div id="demo" class="w3-bar-block w3-blue w3-hide w3-hide-large w3-hide-medium">
+  <a href="index.html" class="w3-bar-item w3-button w3-opacity-max">HELP</a>
+  <a href="#ABOUT" class="w3-bar-item w3-button">ABOUT</a>
+  <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="explore.html" class="w3-bar-item w3-button">EXPLORE</a>
+</div>
+
+  <!-- Page content -->
+  <div class="w3-content" style="max-width:2000px;">
+     <!-- The Header Image -->
+    <div class="w3-display-container">
+      <img src="imgs/trench.jpg" alt="" style="width:100%">
+      <div class="w3-display-middle w3-text-white w3-padding-32">
+        <h1 class="w3-text-white w3-center w3-animate-opacity" style="text-shadow:5px 5px 5px #444"> Earth's Oceans <br> The Mariana Trench <br> <i>Help Section</i> <br></h1>
+      </div>
+    </div>
+
+    <!-- The Help Section -->
+    <div class="w3-light-blue" id="ABOUT">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">Welcome to our support page!</h2>
+      <p class="w3-opacity w3-center"><i> Let us know in the comments if you have any concerns, there is something we forgot to add, or if you have any suggestions. </i></p><br>
+      <div class="card">
+            <p>
+                Feel free to discuss!
+            </p>
+            <!-- begin htmlcommentbox.com -->
+            <div id="HCB_comment_box">
+                <a href="http://www.htmlcommentbox.com"></a> is loading comments...</div>
+            <link rel="stylesheet" type="text/css" href="http://www.htmlcommentbox.com/static/skins/default/skin.css" />
+            <script type="text/javascript" id="hcb">
+                /*<!--*/
+                if (!window.hcb_user) {
+                    hcb_user = {};
+                }(function() {
+                    s = document.createElement("script");
+                    s.setAttribute("type", "text/javascript");
+                    s.setAttribute("src", "http://www.htmlcommentbox.com/jread?page=" + escape((window.hcb_user && hcb_user.PAGE) || ("" + window.location)).replace("+", "%2B") + "&opts=470&num=10");
+                    if (typeof s != "undefined") document.getElementsByTagName("head")[0].appendChild(s);
+                })(); /*-->*/
+            </script>
+            <!-- end htmlcommentbox.com -->
+        </div>
+    </div>
+</div>
+    <!-- The Contact Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" id="contact">
+      <h2 class="w3-wide w3-center">CONTACT</h2>
+      <div class="w3-center">
+        <i class="fa fa-phone"></i> <br> Phone: +00 151515<br>
+        <i class="fa fa-envelope"></i> <br> Email: mail@mail.com<br>
+        <img src="imgs/yay.jpg" class="w3-round-xxlarge" alt="" style="width:70%">
+      </div>
+    </div>
+  <!-- End Page Content -->
+  </div>
+
+  <script>
+  function myFunction() {
+      var x = document.getElementById("demo");
+      if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+      } else { 
+          x.className = x.className.replace(" w3-show", "");
+      }
+  }
+</script>
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+      <a href="https://www.facebook.com/" class="w3-hover-text-indigo"><i class="fa fa-facebook-official"></i></a>
+      <a href="https://www.pinterest.com/" class="w3-hover-text-red"><i class="fa fa-pinterest-p"></i></a>
+      <a href="https://www.instagram.com/?hl=en" class="w3-hover-text-indigo"><i class="fa fa-instagram"></i></a>
+      <p class="w3-medium">Share this page!</p>
+      <p class="w3-medium">Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mariana Trench</title>
+  <link rel="stylesheet" href="w3-4.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Link to font awesome icons style sheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="w3-top">
+  <div class="w3-bar w3-blue w3-card-2 w3-opacity">
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">HOME</a>
+    <a href="#GAMES" class="w3-bar-item w3-button w3-padding-large w3-hide-small">GAMES</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <a href="explore.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">EXPLORE</a>
+    </div>
+
+    <!-- Learned w3 class - menu button -->
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+  </div>
+
+<div id="demo" class="w3-bar-block w3-blue w3-hide w3-hide-large w3-hide-medium">
+  <a href="index.html" class="w3-bar-item w3-button w3-opacity-max">HOME</a>
+  <a href="#GAMES" class="w3-bar-item w3-button">GAMES</a>
+  <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="explore.html" class="w3-bar-item w3-button">EXPLORE</a>
+</div>
+
+  <!-- Page content -->
+  <div class="w3-content" style="max-width:2000px; max-height: 3000px">
+     <!-- The Header Image -->
+    <div class="w3-display-container">
+      <img src="imgs/underwater.gif" alt="" style="width:100%">
+      <div class="w3-display-middle w3-text-white w3-padding-32">
+        <h1 class="w3-text-white w3-center" style="text-shadow:5px 5px 5px #444"> <br> Games Section <br> <i> Catch The Fish! </i> </h1>
+      </div>
+    </div>
+
+    <!-- The Games Section -->
+    <div class="w3-light-blue" id="GAMES">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:2000px">
+      <h2 class="w3-wide w3-center"> <i> More Games Coming Soon! </i></h2>
+    </div>
+    <div>
+      <img src="imgs/aquatic.jpg" alt="" style="width:100%">
+    </div>
+</div>
+    <!-- The Contact Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" id="contact">
+      <h2 class="w3-wide w3-center">CONTACT</h2>
+      <div class="w3-center">
+        <i class="fa fa-phone"></i> <br> Phone: +00 151515<br>
+        <i class="fa fa-envelope"></i> <br> Email: mail@mail.com<br>
+        <img src="imgs/yay.jpg" class="w3-round-xxlarge" alt="" style="width:70%">
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+  /*
+  Flying Butterfly/Swimming Fish script (By BGAudioDr@aol.com)
+  Modified slightly/ permission granted to Dynamic Drive to feature script in archive
+  For full source, visit http://www.dynamicdrive.com
+  */
+
+    var Ymax=8;                                //MAX # OF PIXEL STEPS IN THE "X" DIRECTION
+    var Xmax=8;                                //MAX # OF PIXEL STEPS IN THE "Y" DIRECTION
+    var Tmax=10000;                        //MAX # OF MILLISECONDS BETWEEN PARAMETER CHANGES
+
+    //FLOATING IMAGE URLS FOR EACH IMAGE. ADD OR DELETE ENTRIES. KEEP ELEMENT NUMERICAL ORDER STARTING WITH "0" !!
+
+    var floatimages=new Array();
+    floatimages[0]='imgs/fish1.gif';
+    floatimages[1]='imgs/fish2.gif';
+    floatimages[2]='imgs/fish3.gif';
+
+    //*********DO NOT EDIT BELOW***********
+    var NS4 = (navigator.appName.indexOf("Netscape")>=0 && parseFloat(navigator.appVersion) >= 4 && parseFloat(navigator.appVersion) < 5)? true : false;
+    var IE4 = (document.all)? true : false;
+    var NS6 = (parseFloat(navigator.appVersion) >= 5 && navigator.appName.indexOf("Netscape")>=0 )? true: false;
+    var wind_w, wind_h, t='', IDs=new Array();
+    for(i=0; i<floatimages.length; i++){
+    t+=(NS4)?'<layer name="pic'+i+'" visibility="hide" width="10" height="10"><a href="javascript:hidebutterfly()">' : '<div id="pic'+i+'" style="position:absolute; visibility:hidden;width:10px; height:10px; z-index:1000"><a href="javascript:hidebutterfly()">';
+    t+='<img src="'+floatimages[i]+'" name="p'+i+'" border="0">';
+    t+=(NS4)? '</a></layer>':'</a></div>';
+    }
+    document.write(t);
+
+    function moveimage(num){
+    if(getidleft(num)+IDs[num].W+IDs[num].Xstep >= wind_w+getscrollx())IDs[num].Xdir=false;
+    if(getidleft(num)-IDs[num].Xstep<=getscrollx())IDs[num].Xdir=true;
+    if(getidtop(num)+IDs[num].H+IDs[num].Ystep >= wind_h+getscrolly())IDs[num].Ydir=false;
+    if(getidtop(num)-IDs[num].Ystep<=getscrolly())IDs[num].Ydir=true;
+    moveidby(num, (IDs[num].Xdir)? IDs[num].Xstep :  -IDs[num].Xstep , (IDs[num].Ydir)?  IDs[num].Ystep:  -IDs[num].Ystep);
+    }
+
+    function getnewprops(num){
+    IDs[num].Ydir=Math.floor(Math.random()*2)>0;
+    IDs[num].Xdir=Math.floor(Math.random()*2)>0;
+    IDs[num].Ystep=Math.ceil(Math.random()*Ymax);
+    IDs[num].Xstep=Math.ceil(Math.random()*Xmax)
+    setTimeout('getnewprops('+num+')', Math.floor(Math.random()*Tmax));
+    }
+
+    function getscrollx(){
+    if(NS4 || NS6)return window.pageXOffset;
+    if(IE4)return document.body.scrollLeft;
+    }
+
+    function getscrolly(){
+    if(NS4 || NS6)return window.pageYOffset;
+    if(IE4)return document.body.scrollTop;
+    }
+
+    function getid(name){
+    if(NS4)return document.layers[name];
+    if(IE4)return document.all[name];
+    if(NS6)return document.getElementById(name);
+    }
+
+    function moveidto(num,x,y){
+    if(NS4)IDs[num].moveTo(x,y);
+    if(IE4 || NS6){
+    IDs[num].style.left=x+'px';
+    IDs[num].style.top=y+'px';
+    }}
+
+    function getidleft(num){
+    if(NS4)return IDs[num].left;
+    if(IE4 || NS6)return parseInt(IDs[num].style.left);
+    }
+
+    function getidtop(num){
+    if(NS4)return IDs[num].top;
+    if(IE4 || NS6)return parseInt(IDs[num].style.top);
+    }
+
+    function moveidby(num,dx,dy){
+    if(NS4)IDs[num].moveBy(dx, dy);
+    if(IE4 || NS6){
+    IDs[num].style.left=(getidleft(num)+dx)+'px';
+    IDs[num].style.top=(getidtop(num)+dy)+'px';
+    }}
+
+    function getwindowwidth(){
+    if(NS4 || NS6)return window.innerWidth;
+    if(IE4)return document.body.clientWidth;
+    }
+
+    function getwindowheight(){
+    if(NS4 || NS6)return window.innerHeight;
+    if(IE4)return document.body.clientHeight;
+    }
+
+    function init(){
+    wind_w=getwindowwidth();
+    wind_h=getwindowheight();
+    for(i=0; i<floatimages.length; i++){
+    IDs[i]=getid('pic'+i);
+    if(NS4){
+    IDs[i].W=IDs[i].document.images["p"+i].width;
+    IDs[i].H=IDs[i].document.images["p"+i].height;
+    }
+    if(NS6 || IE4){
+    IDs[i].W=document.images["p"+i].width;
+    IDs[i].H=document.images["p"+i].height;
+    }
+    getnewprops(i);
+    moveidto(i , Math.floor(Math.random()*(wind_w-IDs[i].W)), Math.floor(Math.random()*(wind_h-IDs[i].H)));
+    if(NS4)IDs[i].visibility = "show";
+    if(IE4 || NS6)IDs[i].style.visibility = "visible";
+    startfly=setInterval('moveimage('+i+')',Math.floor(Math.random()*100)+100);
+    }}
+
+    function hidebutterfly(){
+    for(i=0; i<floatimages.length; i++){
+    if (IE4)
+    eval("document.all.pic"+i+".style.visibility='hidden'")
+    else if (NS6)
+    document.getElementById("pic"+i).style.visibility='hidden'
+    else if (NS4)
+    eval("document.pic"+i+".visibility='hide'")
+    clearInterval(startfly)
+    }
+    }
+
+    if (NS4||NS6||IE4){
+    window.onload=init;
+    window.onresize=function(){ wind_w=getwindowwidth(); wind_h=getwindowheight(); }
+    }
+
+  </script>
+
+  <script>
+  function myFunction() {
+      var x = document.getElementById("demo");
+      if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+      } else { 
+          x.className = x.className.replace(" w3-show", "");
+      }
+  }
+</script>
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+      <a href="https://www.facebook.com/" class="w3-hover-text-indigo"><i class="fa fa-facebook-official"></i></a>
+      <a href="https://www.pinterest.com/" class="w3-hover-text-red"><i class="fa fa-pinterest-p"></i></a>
+      <a href="https://www.instagram.com/?hl=en" class="w3-hover-text-indigo"><i class="fa fa-instagram"></i></a>
+      <p class="w3-medium">Share this page!</p>
+      <p class="w3-medium">Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+  </footer>
+</body>
+</html>
